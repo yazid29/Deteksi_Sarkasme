@@ -1,0 +1,231 @@
+{% extends 'mainLayout.html' %}
+{% block content %}
+<div class="main-content">
+    <div class="container col-lg-12 mt-2">
+        <div class="row">
+            {% if data['alert'] != 1:%}
+            <div class="col-md-4">
+                <a href="/tfidf" class="btn btn-primary btn-lg btn-block" style="color: white;">Vectorisasi(TF-IDF)</a>
+            </div>
+            <div class="col-md-8">
+                <div class="alert-dismiss">
+                    {% for message in get_flashed_messages() %}
+                    <div '{% if kondisi==0: %}'
+                        class="alert alert-warning alert-dismissible fade show" '{% elif kondisi==1: %}'
+                        class="alert alert-warning alert-dismissible fade show" '{% else: %}'
+                        class="alert alert-success alert-dismissible fade show" '{% endif %}' role="alert">
+                        <strong>{{ message }}</strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                class="fa fa-times"></span>
+                        </button>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+            <div class="col-lg-12 mt-2">
+                <div class="card">
+                    <div class="card-body ">
+                        <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="casefolding-tab" data-toggle="tab" href="#casefolding"
+                                    role="tab" aria-controls="casefolding"
+                                    aria-selected="true">Casefolding&RemoveURL</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " id="tokenisasi-tab" data-toggle="tab" href="#tokenisasi" role="tab"
+                                    aria-controls="tokenisasi" aria-selected="true">Tokenisasi</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="cleaning-tab" data-toggle="tab" href="#cleaning" role="tab"
+                                    aria-controls="cleaning" aria-selected="true">Cleaning</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="normalisasi-tab" data-toggle="tab" href="#normalisasi"
+                                    role="tab" aria-controls="normalisasi" aria-selected="false">Normalisasi</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="stopword-tab" data-toggle="tab" href="#stopword" role="tab"
+                                    aria-controls="stopword" aria-selected="false">Stopword</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="stemming-tab" data-toggle="tab" href="#stemming" role="tab"
+                                    aria-controls="stemming" aria-selected="false">Stemming</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content mt-3">
+                            <div class="tab-pane fade show active" id="casefolding" role="tabpanel"
+                                aria-labelledby="casefolding-tab">
+                                <div class="data-tables datatable-primary">
+                                    <table id="tabel1">
+                                        <thead class="text-capitalize">
+                                            <tr>
+                                                <th class="text-center" scope="col">No</th>
+                                                <th class="text-center" scope="col">Casefolding dan RemoveURL (Hapus
+                                                    URL,Hastag, Mention)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for i in range(0,50) %}
+                                            <tr>
+                                                <th scope="row">{{i+1}}</th>
+                                                <td>{{dataset['removeURL'].loc[i]}}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade show" id="tokenisasi" role="tabpanel"
+                                aria-labelledby="tokenisasi-tab">
+                                <div class="data-tables datatable-primary">
+                                    <table id="tabel2">
+                                        <thead class="text-capitalize">
+                                            <tr>
+                                                <th class="text-center" scope="col">No</th>
+                                                <th class="text-center" scope="col">Tokenisasi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for i in range(0,50) %}
+                                            <tr>
+                                                <th scope="row">{{i+1}}</th>
+                                                <td>{{dataset['Tokenisasi'].loc[i]}}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade show" id="cleaning" role="tabpanel"
+                                aria-labelledby="cleaning-tab">
+                                <div class="data-tables datatable-primary">
+                                    <table id="tabel3">
+                                        <thead class="text-capitalize">
+                                            <tr>
+                                                <th class="text-center" scope="col">No</th>
+                                                <th class="text-center" scope="col">Cleaning (Angka, Simbol)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for i in range(0,50) %}
+                                            <tr>
+                                                <th scope="row">{{i+1}}</th>
+                                                <td>{{dataset['Cleanings'].loc[i]}}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="normalisasi" role="tabpanel"
+                                aria-labelledby="normalisasi-tab">
+                                <div class="data-tables datatable-primary">
+                                    <table id="tabel4">
+                                        <thead class="text-capitalize">
+                                            <tr>
+                                                <th class="text-center" scope="col">No</th>
+                                                <th class="text-center" scope="col">Normalisasi dan Casefolding (Hapus
+                                                    TandaBaca, Angka)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for i in range(0,50) %}
+                                            <tr>
+                                                <th scope="row">{{i+1}}</th>
+                                                <td>{{dataset['Normalisasi'].loc[i]}}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="stopword" role="tabpanel" aria-labelledby="stopword-tab">
+                                <div class="data-tables datatable-primary">
+                                    <table id="tabel5">
+                                        <thead class="text-capitalize">
+                                            <tr>
+                                                <th class="text-center" scope="col">No</th>
+                                                <th class="text-center" scope="col">Stopword</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for i in range(0,50) %}
+                                            <tr>
+                                                <th scope="row">{{i+1}}</th>
+                                                <td>{{dataset['Stopword'].loc[i]}}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade " id="stemming" role="tabpanel" aria-labelledby="stemming-tab">
+                                <div class="data-tables datatable-primary">
+                                    <table id="tabel6">
+                                        <thead class="text-capitalize">
+                                            <tr>
+                                                <th class="text-center" scope="col">No</th>
+                                                <th class="text-center" scope="col">Stemming</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for i in range(0,50) %}
+                                            <tr>
+                                                <th scope="row">{{i+1}}</th>
+                                                <td>{{dataset['Stemmed'].loc[i]}}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block script %}
+<script>
+    $(document).ready(function () {
+        $.extend($.fn.dataTable.defaults, {
+            searching: false,
+        });
+        $('#tabel1').DataTable({
+            "autoWidth": false,
+            info: false,
+            "pagingType": "simple_numbers"
+        });
+
+        $('#tabel2').DataTable({
+            "autoWidth": false,
+            info: false,
+            "pagingType": "simple_numbers",
+        });
+        $('#tabel3').DataTable({
+            "autoWidth": false,
+            info: false,
+            "pagingType": "simple_numbers",
+        });
+        $('#tabel4').DataTable({
+            "autoWidth": false,
+            info: false,
+            "pagingType": "simple_numbers",
+        });
+        $('#tabel5').DataTable({
+            "autoWidth": false,
+            info: false,
+            "pagingType": "simple_numbers",
+        });
+        $('#tabel6').DataTable({
+            "autoWidth": false,
+            info: false,
+            "pagingType": "simple_numbers",
+        });
+    });
+</script>
+{% endblock %}

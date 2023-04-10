@@ -1,0 +1,70 @@
+{% extends 'mainLayout.html' %}
+{% block content %}
+<div class="main-content">
+    <div class="container col-lg-12 mt-2">
+        <div class="card">
+            <div class="card-body ">
+                <p><b><i>Support Vector Machine Ensemble (Adaboost).</b> K-Fold Cross Validation</i> (K=5)</p>
+                <div class="single-table">
+                    <div class="table-responsive">
+                        <table class="table text-center">
+                            <thead class="text-uppercase bg-primary">
+                                <tr class="text-white">
+                                    <th class="text-center" scope="col">Fold</th>
+                                    <th class="text-center" scope="col">Jumlah Data Uji</th>
+                                    <th class="text-center" scope="col">True Positif (TP)</th>
+                                    <th class="text-center" scope="col">True Negatif (TN)</th>
+                                    <th class="text-center" scope="col">False Positif (FP)</th>
+                                    <th class="text-center" scope="col">False Negatif (FN)</th>
+                                    <th class="text-center" scope="col">Akurasi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% if(kfold!=None) %}
+                                {% for x in range(kfold|length) %}
+                                <tr>
+                                    <th scope="row">Fold-{{x+1}}</th>
+                                    <th>{{kfold[x][0]}}</th>
+                                    <td>{{kfold[x][1]}}</td>
+                                    <td>{{kfold[x][2]}}</td>
+                                    <td>{{kfold[x][3]}}</td>
+                                    <td>{{kfold[x][4]}}</td>
+                                    <th>{{kfold[x][5]}}%</th>
+                                </tr>
+                                {% endfor %}
+                                {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row ">
+            <!-- table start -->
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-md-3 mt-3">
+                        <a href="/reset" class="p-2 btn btn-danger btn-lg btn-block" style="color: white;">Klasifikasi
+                            Ulang?</a>
+                    </div>
+                    <div class="col-md-9 mt-3">
+                        <div class="card">
+                            <div class="seo-fact sbg1">
+                                <div class="p-4 d-flex justify-content-between align-items-center">
+                                    <h4>
+                                        <div class="seofct-icon">Rata-rata akurasi</div>
+                                    </h4>
+                                    {% if hasil_akurasi != 0: %}<h4>{{ rata2akurasi }}</h4>{% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<br><br><br><br>
+{% endblock %}

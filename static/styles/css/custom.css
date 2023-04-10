@@ -1,0 +1,446 @@
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins'
+}
+
+.mainheader {
+    background: #0082e6;
+    height: auto;
+    width: 100%;
+
+}
+
+label.logo {
+    color: white;
+    font-size: 32px;
+    line-height: 60px;
+    padding: 0 10px;
+    font-weight: bold;
+}
+
+.mainheader ul {
+    float: right;
+    margin-right: 20px;
+}
+
+.mainheader ul li {
+    display: inline-block;
+    line-height: 60px;
+    margin: 0 5px
+}
+
+.mainheader ul li {
+    color: white;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+.header {
+    padding-left: 0;
+    padding-right: 0;
+
+}
+
+.horizontal-menu {
+    position: relative;
+}
+
+.horizontal-menu ul li {
+    display: inline-block;
+    position: relative;
+
+}
+
+.horizontal-menu ul li a {
+    display: block;
+    font-size: 13px;
+    padding: 10px 20px;
+    color: #000000;
+    text-transform: capitalize;
+
+}
+
+.horizontal-menu ul li:hover>a,
+.horizontal-menu ul li.active>a {
+    color: #007BFF;
+}
+
+.horizontal-menu nav>ul>li:first-child>a {
+    padding-left: 0;
+}
+
+.horizontal-menu ul li:hover>a,
+.horizontal-menu ul li.active>a {
+    color: #007BFF;
+}
+
+.horizontal-menu nav>ul>li:first-child>a {
+    padding-left: 0;
+}
+
+.horizontal-menu ul li a i {
+    margin-right: 5px;
+}
+
+.horizontal-menu .submenu {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    z-index: 99;
+    width: 200px;
+    background: #fff;
+    opacity: 0;
+    visibility: hidden;
+    border-top: 4px solid #007BFF;
+    border-radius: 3px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.03);
+}
+
+.horizontal-menu .submenu li {
+    display: block;
+}
+
+.horizontal-menu ul li:hover>.submenu {
+    opacity: 1;
+    visibility: visible;
+}
+
+.sidebar-ver {
+    background: #fff;
+
+    border-bottom: 1px solid #c8d2d6;
+}
+
+.main-content {
+    padding: 10px 25px 0px;
+}
+
+h4.header-title {
+    font-family: 'Lato', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0;
+    color: #333;
+    text-transform: capitalize;
+    margin-bottom: 17px;
+}
+
+.single-table .table {
+    margin-bottom: 0;
+}
+
+.footer {
+    text-align: center;
+    bottom: 0;
+    width: 100%;
+    margin-top: 50px;
+    background: #fff;
+    color: #676666;
+}
+
+
+.seo-fact {
+    border-radius: 3px;
+}
+
+.sbg1 {
+    background: -webkit-linear-gradient(291deg, rgb(77, 77, 253) 0%, rgb(108, 143, 234) 100%);
+    background: linear-gradient(159deg, rgb(77, 77, 253) 0%, rgb(108, 143, 234) 100%);
+}
+
+.sbg2 {
+    background: -webkit-linear-gradient(291deg, rgb(5, 176, 133) 0%, rgb(27, 212, 166) 59%);
+    background: linear-gradient(159deg, rgb(5, 176, 133) 0%, rgb(27, 212, 166) 59%);
+}
+
+.sbg3 {
+    background: -webkit-linear-gradient(298deg, rgb(216, 88, 79) 0%, rgb(243, 140, 140) 100%);
+    background: linear-gradient(152deg, rgb(216, 88, 79) 0%, rgb(243, 140, 140) 100%);
+}
+
+.sbg4 {
+    background: -webkit-linear-gradient(59deg, rgb(254, 208, 63) 0%, rgb(230, 190, 63) 110%);
+    background: linear-gradient(31deg, rgb(254, 208, 63) 0%, rgb(230, 190, 63) 110%);
+}
+
+.seofct-icon {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.seofct-icon i {
+    font-size: 52px;
+    margin-right: 20px;
+    vertical-align: middle;
+    -webkit-transform: translateY(-5px);
+    transform: translateY(-5px);
+    display: inline-block;
+}
+
+.datatable-primary thead {
+    background: #4336fb;
+    color: #fff;
+}
+
+/*-------------------- 8. Accroding ------------------- */
+
+.according .card {
+    margin-bottom: 20px;
+}
+
+.according .card:last-child {
+    margin-bottom: 0;
+}
+
+.according .card-header {
+    padding: 0;
+    border: none;
+}
+
+.according .card-header a {
+    display: block;
+    background: #EFF3F6;
+    padding: 16px 15px;
+    border-radius: 3px;
+    color: #444;
+    letter-spacing: 0;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.according .card-body {
+    padding: 10px;
+    border: 1px solid #eff3f6;
+    font-size: 14px;
+    letter-spacing: 0;
+    color: #444;
+    line-height: 27px;
+    font-weight: 400;
+}
+
+.according .card-header a {
+    position: relative;
+}
+
+.accordion-s2 .card-header a.collapsed:before {
+    content: "\f107";
+}
+
+.accordion-s2 .card-header a:before {
+    content: "\f106";
+    font-family: fontawesome;
+    position: absolute;
+    right: 13px;
+    color: #444;
+    font-size: 26px;
+}
+
+
+
+/* accordion-3 */
+
+.accordion-s3 .card-header a.collapsed:before {
+    content: "\e61a";
+}
+
+.accordion-s3 .card-header a:before {
+    content: "\e622";
+    font-family: 'themify';
+    position: absolute;
+    right: 13px;
+    color: #444;
+    font-size: 15px;
+}
+
+.gradiant-bg .card-header a {
+    background-image: -webkit-linear-gradient(top left, #8914fe, #8160f6);
+    background-image: linear-gradient(to bottom right, #8914fe, #8160f6);
+    color: #fff;
+}
+
+.gradiant-bg .card-header a:before {
+    color: #fff;
+}
+
+/*-------------------- END Accroding ------------------- */
+
+/*Icon progressbar*/
+#progressbar {
+    margin-bottom: 30px;
+    overflow: hidden;
+    color: lightgrey;
+}
+
+#progressbar .active {
+    color: #673AB7;
+}
+
+#progressbar li {
+    list-style-type: none;
+    font-size: 15px;
+    width: 25%;
+    float: left;
+    position: relative;
+    font-weight: 400;
+}
+
+/*Icons in the ProgressBar*/
+#progressbar #account:before {
+    font-family: FontAwesome;
+    content: "\f13e";
+}
+
+#progressbar #personal:before {
+    font-family: FontAwesome;
+    content: "\f007";
+}
+
+#progressbar #payment:before {
+    font-family: FontAwesome;
+    content: "\f030";
+}
+
+#progressbar #confirm:before {
+    font-family: FontAwesome;
+    content: "\f00c";
+}
+
+/*Icon ProgressBar before any progress*/
+#progressbar li:before {
+    width: 50px;
+    height: 50px;
+    line-height: 45px;
+    display: block;
+    font-size: 20px;
+    color: #ffffff;
+    background: lightgray;
+    border-radius: 50%;
+    margin: 0 auto 10px auto;
+    padding: 2px;
+}
+
+/*ProgressBar connectors*/
+#progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: lightgray;
+    position: absolute;
+    left: 0;
+    top: 25px;
+    z-index: -1;
+}
+
+/*Color number of the step and the connector before it*/
+#progressbar li.active:before,
+#progressbar li.active:after {
+    background: #673AB7;
+}
+
+/*Animated Progress Bar*/
+.progress {
+    height: 20px;
+}
+
+.progress-bar {
+    background-color: #673AB7;
+}
+
+/*Fit image in bootstrap div*/
+.fit-image {
+    width: 100%;
+    object-fit: cover;
+}
+
+#progressbar {
+    text-align: center;
+    position: relative;
+    margin-top: 20px;
+}
+
+/*Icon progressbar*/
+#progressbar {
+    margin-bottom: 30px;
+    overflow: hidden;
+    color: lightgrey;
+}
+
+#progressbar .active {
+    color: #673AB7;
+}
+
+#progressbar li {
+    list-style-type: none;
+    font-size: 15px;
+    width: 25%;
+    float: left;
+    position: relative;
+    font-weight: 400;
+}
+
+/*Icons in the ProgressBar*/
+#progressbar #account:before {
+    font-family: FontAwesome;
+    content: "\f13e";
+}
+
+#progressbar #personal:before {
+    font-family: FontAwesome;
+    content: "\f007";
+}
+
+#progressbar #payment:before {
+    font-family: FontAwesome;
+    content: "\f030";
+}
+
+#progressbar #confirm:before {
+    font-family: FontAwesome;
+    content: "\f00c";
+}
+
+/*Icon ProgressBar before any progress*/
+#progressbar li:before {
+    width: 50px;
+    height: 50px;
+    line-height: 45px;
+    display: block;
+    font-size: 20px;
+    color: #ffffff;
+    background: lightgray;
+    border-radius: 50%;
+    margin: 0 auto 10px auto;
+    padding: 2px;
+}
+
+/*ProgressBar connectors*/
+#progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: lightgray;
+    position: absolute;
+    left: 0;
+    top: 25px;
+    z-index: -1;
+}
+
+/*Color number of the step and the connector before it*/
+#progressbar li.active:before,
+#progressbar li.active:after {
+    background: #673AB7;
+}
+
+
+
+.progress-bar {
+    background-color: #673AB7;
+}

@@ -1,0 +1,146 @@
+{% extends 'mainLayout.html' %}
+{% block content %}
+
+<!-- accroding end -->
+<div class="main-content">
+    <!-- accordion style 1 start -->
+    <div class="col-lg-12 mt-3">
+        <div class="card">
+            <div class="card-body">
+                Karena proses pelatihan sebenarnya sangat lama sehingga berikut akan diperlihatkan
+                hasil akurasi dari ujicoba yang pernah dilakukan pada model pelatihan atau <i>training</i>
+                dengan menggunakan metode
+                <h4 class="header-title">
+                    <i>SUPPORT VECTOR MACHINE ENSEMBLE (ADABOOST).</i></b> dengan
+                    <i>K-Fold Cross Validation</i> (K=10).
+                </h4>
+                <div id="UJI1" class="according">
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="collapsed card-link" data-toggle="collapse" href="#UJI1E">Ujicoba ke-1 (600
+                                Data)</a>
+                        </div>
+                        <div id="UJI1E" class="collapse show" data-parent="#UJI1">
+                            <div class="single-table">
+                                <div class="table-responsive">
+                                    <table class="table text-center">
+                                        <thead class="text-uppercase bg-primary">
+                                            <tr class="text-white">
+                                                <th class="text-center" scope="col">Fold</th>
+                                                <th class="text-center" scope="col">Jumlah Data Uji</th>
+                                                <th class="text-center" scope="col">True Positif (TP)</th>
+                                                <th class="text-center" scope="col">True Negatif (TN)</th>
+                                                <th class="text-center" scope="col">False Positif (FP)</th>
+                                                <th class="text-center" scope="col">False Negatif (FN)</th>
+                                                <th class="text-center" scope="col">Akurasi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Fold-1</th>
+                                                <th>60</th>
+                                                <td>2</td>
+                                                <td>44</td>
+                                                <td>4</td>
+                                                <td>10</td>
+                                                <th>76.6</th>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Fold-2</th>
+                                                <th>60</th>
+                                                <td>3</td>
+                                                <td>47</td>
+                                                <td>3</td>
+                                                <td>7</td>
+                                                <th>83.3</th>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Fold-3</th>
+                                                <th>60</th>
+                                                <td>1</td>
+                                                <td>45</td>
+                                                <td>4</td>
+                                                <td>10</td>
+                                                <th>76.6</th>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Fold-4</th>
+                                                <th>60</th>
+                                                <td>5</td>
+                                                <td>44</td>
+                                                <td>158</td>
+                                                <td>6</td>
+                                                <th>81.6</th>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Fold-5</th>
+                                                <th>60</th>
+                                                <td>2</td>
+                                                <td>45</td>
+                                                <td>3</td>
+                                                <td>10</td>
+                                                <th>78.3</th>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Fold-6</th>
+                                                <th>60</th>
+                                                <td>0</td>
+                                                <td>49</td>
+                                                <td>5</td>
+                                                <td>6</td>
+                                                <th>81.6</th>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Fold-7</th>
+                                                <th>60</th>
+                                                <td>7</td>
+                                                <td>39</td>
+                                                <td>10</td>
+                                                <td>4</td>
+                                                <th>76.6</th>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Fold-8</th>
+                                                <th>60</th>
+                                                <td>4</td>
+                                                <td>49</td>
+                                                <td>2</td>
+                                                <td>5</td>
+                                                <th>88.3</th>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Fold-9</th>
+                                                <th>60</th>
+                                                <td>2</td>
+                                                <td>45</td>
+                                                <td>4</td>
+                                                <td>9</td>
+                                                <th>78.3</th>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Fold-10</th>
+                                                <th>60</th>
+                                                <td>1</td>
+                                                <td>44</td>
+                                                <td>2</td>
+                                                <td>13</td>
+                                                <th>75.0</th>
+                                            </tr>
+                                            <tr>
+                                                <th colspan="6">Rata-rata Akurasi</th>
+                                                <th>79.6</th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- accordion style 1 end -->
+</div>
+<br><br><br><br>
+{% endblock %}

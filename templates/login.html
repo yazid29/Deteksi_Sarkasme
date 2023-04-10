@@ -1,0 +1,65 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Login - Deteksi Sarkasme</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'styles/css/login/custom.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'styles/css/login/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'styles/css/login/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'styles/css/themify-icons.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'styles/css/login/metisMenu.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'styles/css/login/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'styles/css/login/slicknav.min.css')}}">
+    <!-- others css -->
+    <link rel="stylesheet" href="{{url_for('static', filename = 'styles/css/login/typography.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'styles/css/login/default-css.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'styles/css/login/styles.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'styles/css/login/responsive.css')}}">
+    <link rel="icon" href="{{url_for('static', filename = 'styles/images/ds.png')}}" type="image/x-icon">
+</head>
+
+<body>
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+    <!-- preloader area end -->
+    <!-- login area start -->
+    <div class="login-area">
+        <div class="container">
+            <div class="login-box ptb--100">
+                <form action="{{url_for('login2')}}" method="POST">
+                    <div class="login-form-head">
+                        <h4>Deteksi Sarkasme</h4>
+                        <p>Selamat Datang! Tekan LANJUT untuk melanjutkan.</p>
+                    </div>
+                    <div class="login-form-body">
+                        <div class="submit-btn-area">
+                            <button>Lanjut <i class="ti-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- login area end -->
+
+    <!-- jquery latest version -->
+    <script src="{{url_for('static', filename = 'styles/js/login/vendor/jquery-2.2.4.min.js')}}"></script>
+    <!-- bootstrap 4 js -->
+    <script src="{{url_for('static', filename = 'styles/js/login/popper.min.js')}}"></script>
+    <script src="{{url_for('static', filename = 'styles/js/login/bootstrap.min.js')}}"></script>
+    <script src="{{url_for('static', filename = 'styles/js/login/owl.carousel.min.js')}}"></script>
+    <script src="{{url_for('static', filename = 'styles/js/login/metisMenu.min.js')}}"></script>
+    <script src="{{url_for('static', filename = 'styles/js/login/jquery.slimscroll.min.js')}}"></script>
+    <script src="{{url_for('static', filename = 'styles/js/login/jquery.slicknav.min.js')}}"></script>
+
+    <!-- others plugins -->
+    <script src="{{url_for('static', filename = 'styles/js/login/plugins.js')}}"></script>
+    <script src="{{url_for('static', filename = 'styles/js/login/scripts.js')}}"></script>
+</body>
+
+</html>

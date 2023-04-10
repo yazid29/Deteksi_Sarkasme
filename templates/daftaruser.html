@@ -1,0 +1,124 @@
+{% extends 'mainLayout.html' %}
+{% block content %}
+<style>
+    .centere {
+        height: 20vh;
+        margin-top: 10%
+    }
+</style>
+<div class="main-content">
+    <div class="container col-lg-12 mt-3">
+        <div class="row ">
+            <div class="col-lg-12 mt-2">
+                <div class="row">
+                    <div class="col-lg-8 mt-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="header-title">Daftar Anotator</h4>
+                                <!-- Primary table start -->
+                                <div class="col-12 mt-4">
+                                    <div class="dataTable datatable-primary">
+                                        <table id="stopword">
+                                            <thead class="text-capitalize">
+                                                <tr>
+                                                    <th class="text-center">Username</th>
+                                                    <th class="text-center" style="width:50%">Nama</th>
+                                                    <th class="text-center">Peran</th>
+                                                    {% if session["uname"] == "admin" %}
+                                                    <th>Hapus</th>
+                                                    {% endif %}
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for i in range(0,dataUser|length) %}
+                                                <tr>
+                                                    <th class="text-center">{{dataUser["username"].loc[i]}}</th>
+                                                    <td class="text-center">{{dataUser["nama"].loc[i]}}</td>
+                                                    <td class="text-center">
+                                                        Anotator
+                                                    </td>
+                                                    {% if session["uname"] == "admin" %}
+                                                    <td scope="row" class="btn btn-danger btn-sm">
+                                                        <a style="text-decoration:none;color: white"
+                                                            href="/deleteAnot/{{dataUser["username"].loc[i]}}">Hapus</a>
+                                                    </td>
+                                                    {% endif %}
+                                                </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- Primary table end -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- table end -->
+                    <div class="col-lg-4 mt-4">
+                        <div class="card">
+                            {% if session["uname"] == "admin" %}
+                            <div class="card-body">
+                                <h4 class="header-title">Tambah Anotator</h4>
+                                <div class="card-body mt-3">
+                                    {% for message in get_flashed_messages() %}
+                                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                        <strong>{{ message }}</strong>
+                                        <button type="button" class="close" data-dismiss="alert"
+                                            aria-label="Close"><span class="fa fa-times"></span>
+                                        </button>
+                                    </div>
+                                    {% endfor %}
+                                    <form action="{{url_for('addAnotator')}}" method="POST">
+                                        <div class="form-group">
+                                            <label for="username-input" class="col-form-label">Username</label>
+                                            <input id="username-input" class="form-control" name="username"
+                                                required="1">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="namae-input" class="col-form-label">Nama</label>
+                                            <input id="namae-input" class="form-control" name="namae" required="1">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="passworde-input" class="col-form-label">Password</label>
+                                            <input type="password" id="passworde-input" class="form-control"
+                                                name="passworde" required="1">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="level-input" class="col-form-label">Peran</label>
+                                            <select class="form-control" name="level" required="1">
+                                                <option disabled>Select</option>
+                                                <option selected value="Ano">Anotator
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary pr-4 pl-4">Tambah</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br><br><br>
+{% endblock %}
+{% block script %}
+<script>
+    $(document).ready(function () {
+        $.extend($.fn.dataTable.defaults, {
+            searching: false,
+        });
+        $('#stopword').DataTable({
+            info: false,
+            "autoWidth": false,
+            "pagingType": "simple_numbers",
+            "lengthChange": false,
+            "pageLength": 15,
+            "ordering": false
+        });
+    });
+</script>
+{% endblock %}

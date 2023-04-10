@@ -1,0 +1,149 @@
+{% extends 'mainLayout.html' %}
+{% block content %}
+<style>
+    .centere {
+        height: 20vh;
+        margin-top: 10%
+    }
+</style>
+<div class="main-content">
+    <div class="container">
+        <div class="row ">
+            {% if data['pilihData'] == None:%}
+            <div class="col-lg-1"></div>
+            <div class="col-lg-10 centere">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="{{url_for('selectDataset')}}" method="POST">
+                            <div class="form-row align-items-center">
+                                <label for="stopword-input" class="col-form-label">Pilih
+                                    Dataset Pelatihan</label>
+                                <div class="col-sm-8 my-1">
+                                    <select class="form-control" name="selectData">
+                                        <option disabled>Select</option>
+                                        <option selected value="dataset">Dataset Jaringan Tweet (600 Data)</option>
+                                    </select>
+                                </div>
+                                <div class="col-auto my-1">
+                                    <button type="submit" class="btn btn-primary">Pilih</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-1"></div>
+            {% endif %}
+            <div class="col-lg-12 mt-3">
+                <div class="row">
+                    {% if data['pilihData'] != None:%}
+                    <div class="col-lg-12 mt-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <p>Pada Deteksi Sarkasme ini menggunakan metode Support Vector Machine Ensemble
+                                    (Adaboost) sebagai metode pembelajaran.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mt-3">
+                        <div class="card">
+                            <div class="card-body" style="height: 400px">
+                                <div class="col-md-12 mt-3 mb-4">
+                                    <div class="card">
+                                        <div class="seo-fact sbg1">
+                                            <div class="p-4 d-flex justify-content-between align-items-center">
+                                                <h4>
+                                                    <div class="seofct-icon">Jumlah Data</div>
+                                                </h4>
+                                                {% if data['jumlahTotal'] != "": %}<h4>{{ data['jumlahTotal'] }}</h4>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mt-3 mb-4">
+                                    <div class="card-bod">
+                                        <div class="seo-fact sbg2">
+                                            <div class="p-4 d-flex justify-content-between align-items-center">
+                                                <div style="font-size:18px" class="seofct-icon">Sarkasme</div>
+                                                {% if data['sarkasme'] != "": %}<h4>{{ data['sarkasme'] }}</h4>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mt-3 mb-4">
+                                    <div class="card">
+                                        <div class="seo-fact sbg3">
+                                            <div class="p-4 d-flex justify-content-between align-items-center">
+                                                <div style="font-size:18px" class="seofct-icon">Bukan Sarkasme</div>
+                                                {% if data['bukansarkas'] != "": %}<h4>{{ data['bukansarkas'] }}</h4>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mt-3">
+                        <div class="card">
+                            <div class="card-body" style="height: 400px">
+                                <div class="chartjs-size-monitor"
+                                    style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+                                    <div class="chartjs-size-monitor-expand"
+                                        style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                                        <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0">
+                                        </div>
+                                    </div>
+                                    <div class="chartjs-size-monitor-shrink"
+                                        style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+                                        <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
+                                    </div>
+                                </div>
+                                <canvas id="chart-line" width="350" height="200" class="chartjs-render-monitor"
+                                    style="position: relative; height:40vh; width:80vw">
+                                </canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <!--
+                    <div class="col-md-3 mt-3">
+                        <a href="{{url_for('gantiData')}}" class="p-2 btn btn-danger btn-lg btn-block"
+                            style="color: white;">Ganti
+                            Data?</a>
+                    </div>
+                    -->
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br><br><br>
+{% endblock %}
+{% block script %}
+<script>
+    var sarkas = "{{data['sarkasme']}}";
+    var bknsarkas = "{{data['bukansarkas']}}";
+    $(document).ready(function () {
+        var ctx = $("#chart-line");
+        var myLineChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ["Sarkasme", "BukanSarkas"],
+                datasets: [{
+                    data: [sarkas, bknsarkas],
+                    backgroundColor: ["rgb(216, 88, 79)", "rgb(5, 176, 133)"]
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: 'Distribusi'
+                }
+            }
+        });
+    });
+</script>
+{% endblock %}

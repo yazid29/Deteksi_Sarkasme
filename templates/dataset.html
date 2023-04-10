@@ -1,0 +1,87 @@
+{% extends 'mainLayout.html' %}
+{% block content %}
+<div class="main-content">
+    <div class="container col-lg-12 mt-3">
+        <div class="row ">
+            <div class="col-md-4">
+                <a href="/pemrosesan" class="btn btn-primary btn-lg btn-block" style="color: white;">Pre-Processing</a>
+            </div>
+            {% if data['preproses'] != True:%}
+            <div class="col-md-8">
+                <div class="alert-dismiss">
+                    {% for message in get_flashed_messages() %}
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong>{{ message }}</strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                class="fa fa-times"></span>
+                        </button>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% else %}
+            <div class="col-md-12">
+                <div class="alert-dismiss">
+                    {% for message in get_flashed_messages() %}
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>{{ message }}</strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                class="fa fa-times"></span>
+                        </button>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+            <!-- table start -->
+            <div class="col-lg-12 mt-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="header-title">Dataset Tweet. Jumlah : {{jmlahD}}</h4>
+                        <!-- Primary table start -->
+                        <div class="col-12 mt-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="data-tables datatable-primary">
+                                        <table id="tabel">
+                                            <thead class="text-capitalize">
+                                                <tr>
+                                                    <th class="text-center" scope="col">No</th>
+                                                    <th class="text-center" scope="col">Tweet</th>
+                                                    <th class="text-center" scope="col">Label</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for i in range(0,dataset|length) %}
+                                                <tr>
+                                                    <th scope="row">{{i+1}}</th>
+                                                    <td>{{dataset['Tweet'].loc[i]}}</td>
+                                                    <td>{{dataset['Label'].loc[i]}}</td>
+                                                </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Primary table end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block script %}
+<script>
+    $(document).ready(function () {
+        $.extend($.fn.dataTable.defaults, {});
+        $('#tabel').DataTable({
+            info: false,
+            "pagingType": "simple_numbers"
+        });
+    });
+</script>
+{% endblock %}

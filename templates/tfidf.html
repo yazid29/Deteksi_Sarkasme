@@ -1,0 +1,67 @@
+{% extends 'mainLayout.html' %}
+{% block content %}
+<div class="main-content mt-3">
+    <div class="main-content-inner">
+        <div class="row">
+            <!--
+            <div class="col-md-3">
+                <a href="/goklasifikasi" class="btn btn-primary btn-lg btn-block" style="color: white;">Uji&Latih
+                    Model</a>
+            </div>
+            -->
+            <div class="col-md-12">
+                <div class="alert-dismiss">
+                    {% for message in get_flashed_messages() %}
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong>{{ message }} hasil proses Klasifikasi yang pernah dilakukan. </strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                class="fa fa-times"></span>
+                        </button>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-lg-3 mt-4">
+                <div class="card">
+                    <div class="card-body seo-fact sbg1" style="color:white">
+                        Fitur didapat: {{ jmlfitur }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9 mt-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="header-title">Vektorisasi (TF-IDF). Sebagian Contoh Term Terhadap Bebearapa Dokumen
+                        </h4>
+                        <!-- Primary table start -->
+                        <div class="col-12 mt-6">
+                            <div class="data-tables datatable-primary">
+                                {{ tables|safe }}
+                            </div>
+                        </div>
+                        <!-- Primary table end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block script %}
+<script>
+    $(document).ready(function () {
+        $.extend($.fn.dataTable.defaults, {
+            searching: false,
+        });
+
+        $('#rank_rata2').DataTable({
+            info: false,
+            "pagingType": "simple_numbers",
+        });
+        $('#tfidf').DataTable({
+            info: false,
+            "paging": false
+        });
+    });
+</script>
+{% endblock %}

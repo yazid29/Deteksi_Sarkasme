@@ -1,0 +1,161 @@
+{% extends 'mainLayout.html' %}
+{% block content %}
+<div class="main-content">
+    <div class="container col-lg-12 mt-3">
+        <div class="row">
+            {% if (savedmodelTrain==False)%}
+            <div class="col-md-12">
+                <div class="alert-dismiss">
+                    {% for message in get_flashed_messages() %}
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong>{{ message }}</strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                class="fa fa-times"></span>
+                        </button>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% else %}
+            <div class="col-lg-12 mt-2">
+                <div class="card">
+                    <div class="card-body ">
+                        <h4 class="header-title">Deteksi Tweet</h4>
+                        <div id="datae" class="according">
+                            <div class="card">
+                                <div class="card-header">
+                                    <a class="card-link" data-toggle="collapse" href="#crawl">Ambil Tweet dari Twitter
+                                        <i>(Crawl
+                                            Tweepy)</i></a>
+                                </div>
+                                <div id="crawl" class="collapse show" data-parent="#datae">
+                                    <div class="card-body">
+                                        <form method="POST" id="crawl">
+                                            <label class="col-form-label">Masukan kata kunci yang
+                                                diinginkan, misalkan <b>"jaringan internet"</b>.</label>
+                                            <div class="form-row align-items-center">
+                                                <div class="col-sm-2 my-1">
+                                                    <label for="queryInput" class="col-form-label">Kata Kunci</label>
+                                                </div>
+                                                <div class="col-sm-6 my-1">
+                                                    <input class="form-control" name="queryInput" id="queryInput"
+                                                        placeholder="jaringan internet" value="" required="1">
+                                                </div>
+                                            </div>
+                                            <div class="form-row align-items-center">
+                                                <div class="col-sm-2 my-1">
+                                                    <label for="maxInput" class="col-form-label">Maximal Tweet</label>
+                                                </div>
+                                                <div class="col-sm-2 my-1">
+                                                    <select class="form-control" name="maxInput" id="maxInput">
+                                                        <option disabled>Select</option>
+                                                        <option selected value="10">10</option>
+                                                        <option value="25">25</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-auto my-1">
+                                                    <button type="submit"
+                                                        class="btn btn-primary pr-4 pl-4">Crawl</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--
+                            <div class="card">
+                                <div class="card-header">
+                                    <a class="collapsed card-link" data-toggle="collapse" href="#dataAda">Pilih Data
+                                        yang ada</a>
+                                </div>
+                                <div id="dataAda" class="collapse show" data-parent="#datae">
+                                    <div class="card-body">
+                                        <form action="{{url_for('crawl')}}" method="POST">
+                                            <label class="col-form-label">Pilih Dataset</b>.</label>
+                                            <div class="form-row align-items-center">
+                                                <select class="form-control" name="selectDatae">
+                                                    <option selected disabled value="kosong">Select</option>
+                                                    <option value="dataset2">Dataset-Coba Jaringan Tweet (354 Data)
+                                                    </option>
+                                                </select>
+                                            </div>
+                                            <div class="col-auto my-1">
+                                                <button type="submit" class="btn btn-primary pr-4 pl-4">Pilih</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            <div class="col-lg-4 mt-2">
+                <div class="card">
+                    <div class="card-body ">
+                        <h4 class="header-title">Tweet diambil berjumlah: {{DataCrawl|length}}</h4>
+                        {% if (DataCrawl|length>0)%}
+                        <p>Terdeteksi Sarkasme berjumlah: {{jmlSarkas}}</p>
+                        <p>Terdeteksi BukanSarkasme berjumlah: {{jmlNonSarkas}}</p>
+                        <a href="/resetCrawl" class="p-2 btn btn-danger btn-block" style="color: white;">Bersihkan
+                            Data</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-8 mt-2">
+                <div class="card">
+                    <div class="card-body ">
+                        <h4 class="header-title">Rincian Tweet</h4>
+                        <!-- Datatable area start -->
+                        <div class="data-tables datatable-primary">
+                            <table id="tabel" class="text-center">
+                                <thead class="text-capitalize">
+                                    <tr>
+                                        <th class="text-center">No.</th>
+                                        <th class="text-center">Tweet</th>
+                                        <th class="text-center">Prediksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for i in range(0,DataCrawl|length) %}
+                                    <tr>
+                                        <th scope="row">{{i+1}}</th>
+                                        <td>{{DataCrawl["Tweet"].loc[i]}}</td>
+                                        {% if (prediksi=="sudah")%}
+                                        <td>{{DataCrawl["Prediksi"].loc[i]}}</td>
+                                        {% else %}
+                                        <td scope="row">?</td>
+                                        {% endif %}
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- Datatable area end -->
+            </div>
+        </div>
+    </div>
+</div>
+<br><br><br><br>
+{% endblock %}
+{% block script %}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.extend($.fn.dataTable.defaults, {
+            searching: true,
+        });
+        $('#tabel').DataTable({
+            "autoWidth": false,
+            info: false,
+            "pagingType": "simple_numbers"
+        });
+    });
+</script>
+{% endblock %}

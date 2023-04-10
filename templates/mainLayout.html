@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Deteksi Sarkasme</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block style %}{% endblock %}
+    <!-- style css -->
+    <link rel="stylesheet" href="{{url_for('static', filename = 'styles/css/custom.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'styles/css/loader.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'styles/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'styles/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'styles/css/themify-icons.css')}}">
+    <!-- Start datatable css -->
+    <link rel="stylesheet" href="{{url_for('static', filename = 'styles/css/dataTables1.css')}}">
+
+    <!--
+    <link rel="stylesheet" href="{{url_for('static', filename = 'styles/css/styles.css')}}">
+    <link rel="stylesheet" type="text/css" href="/static/styles/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/styles/css/responsive.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/styles/css/responsive.jqueryui.min.css">
+    <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js'></script>
+    -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.bundle.min.js'></script>
+
+
+    <link rel="icon" href="{{url_for('static', filename = 'styles/images/ds.png')}}" type="image/x-icon">
+
+    <style>
+        .disabled-link {
+            pointer-events: none;
+        }
+
+        .triangle-right {
+            width: 0;
+            height: 0;
+            border-top: 25px solid transparent;
+            border-left: 50px solid #555;
+            border-bottom: 25px solid transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- preloader area start -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+    <!-- preloader area end -->
+    <div class="horizontal-main-wrapper">
+        <div class="page-container">
+            <!-- Navbar -->
+            <div class="mainheader ">
+                <label class="logo" style="padding-left: 20px;padding-top: 10px;">Deteksi Sarkasme </label>
+            </div>
+            <!-- End Navbar -->
+
+            <!-- Sidebar Vertical -->
+            <div class="main-content sidebar-ver">
+                <div class="horizontal-menu">
+                    <nav>
+                        <ul>
+                            <li "{% if request.path=="/" %} class=" active"{% endif %}">
+                                <a href="/"><i class="ti-home"></i><span>Rincian</span></a>
+                            </li>
+                            <li "{% if request.path=="/dataset" %} class=" active"{% endif %}">
+                                <a href="/dataset"><i class="ti-twitter-alt"></i><span>Dataset</span></a>
+                            </li>
+                            <li "{% if request.path=="/pemrosesan" %} class=" active"{% endif %}">
+                                <a href="/view_pemrosesan" "{% if data['preproses'] == None:%} class="
+                                    disabled-link"{% endif %}"><i class="ti-comment-alt"></i><span>Teks
+                                        Pre-Processing</span></a>
+                            </li>
+                            <li "{% if request.path=="/tfidf" %} class=" active"{% endif %}">
+                                <a href="/view_tf_idf" "{% if data['tfidf'] == None:%} class="
+                                    disabled-link"{% endif %}"><i class="ti-receipt"></i><span>Vektorisasi
+                                        (TF-IDF)</span></a>
+                            </li>
+                            <li "{% if request.path=="/history" %} class=" active"{% endif %}">
+                                <a href="/history"><i class="ti-bookmark-alt"></i><span>Riwayat</span></a>
+                            </li>
+                            <li><b>Halo Kawan!</b>
+                            </li>
+                            <li>
+                                <a href="/out"><span class="dropdown-toggle" style="color:red">Logout</span></a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!-- End Sidebar Vertical -->
+            <!-- Content -->
+            {% block content %}{% endblock %}
+            <!-- End Content -->
+
+            <!-- footer -->
+            <footer>
+                <div class="footer">
+                    <p>UNIVERSITAS TRUNOJOYO MADURA. TEKNIK INFORMATIKA.
+                        <br>Created by Ahmad Yazid Munif (160411100105).<br>
+                        Pembimbing I: Mula’ab, S.Si., M.Kom. dan Pembimbing II: Eka Mala Sari Rochman, S.Kom., M.Kom.
+                        <br>©Copyright Template by <a href="https://colorlib.com/wp/">Colorlib</a> and edited by Yazid.
+                </div>
+            </footer>
+        </div>
+    </div>
+    <!-- end footer -->
+    <!-- jquery latest version -->
+    <script src="{{url_for('static', filename = 'styles/js/jquery-3.5.1.js')}}"></script>
+    <!-- bootstrap 4 js -->
+    <script src="{{url_for('static', filename = 'styles/js/popper.min.js')}}"></script>
+    <script src="{{url_for('static', filename = 'styles/js/bootstrap.min.js')}}"></script>
+    <!-- Start datatable js -->
+    <script src="{{url_for('static', filename = 'styles/js/jquery.dataTablesold.js')}}"></script>
+    <!-- others plugins -->
+    <script src="{{url_for('static', filename = 'styles/js/plugins.js')}}"></script>
+    <script src="{{url_for('static', filename = 'styles/js/scripts.js')}}"></script>
+    {% block script %}{% endblock %}
+</body>
+
+</html>
