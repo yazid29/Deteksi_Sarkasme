@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Dec 16 13:40:05 2021
-
-@author: AhmadYazidMunif
-"""
 import pandas as pd
 import re
 import string

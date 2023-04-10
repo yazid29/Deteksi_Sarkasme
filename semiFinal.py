@@ -1,9 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Mon Dec 13 19:26:49 2021
-https://hackersandslackers.com/flask-routes/
-@author: AhmadYazidMunif
-"""
 import os
 import os.path
 import pandas as pd
